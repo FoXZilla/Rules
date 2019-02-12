@@ -7,6 +7,6 @@
     "target": "es6",
     "moduleResolution": "node",
     "lib": ["esnext", "dom"],
-    "sourceMap": true,
+    "sourceMap": true
   }
 }

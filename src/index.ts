@@ -1,8 +1,8 @@
 import Timeline from './Timeline';
 import { ExtensionManager } from 'short-night';
 
-import 'short-night/styles.scss'
-import './styles.scss'
+import 'short-night/styles.scss';
+import './styles.scss';
 
 export async function draw(
     el: string | HTMLElement,
