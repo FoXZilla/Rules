@@ -1,6 +1,6 @@
-import { draw } from '../src';
+import { draw, drawWithAnimation, drawFrom } from '../src';
 
-draw('#app', [{
+const events = [{
     date: '2017-5',
     title: 'Axis example 1',
     endDate: '2017-8',
@@ -59,4 +59,17 @@ draw('#app', [{
     title: '39s Day!',
     description: 'In japan and chinese, the pronunciation  of 39 is very like "Thank You". ' +
         'So some people call as Giving Day.',
-}]);
+}];
+
+(async function () {
+    const timeline1 = await draw('#app', events);
+
+    await new Promise(r => setTimeout(r, 5000));
+
+    await drawFrom('#app', timeline1.export());
+
+    await new Promise(r => setTimeout(r, 3000));
+
+    const timeline2 = await drawWithAnimation('#app', events);
+
+})();
