@@ -46,9 +46,21 @@ export default class EventBody extends Engine.EventBody {
         ctx.fillStyle = '#ffffff';
         ctx.moveTo(box.x, box.y);
         ctx.lineTo(rightX, box.y);
-        ctx.lineTo(rightX, box.y + (box.height / 2 + this.drawInfo.offset.y) - triangle.y / 2);
-        ctx.lineTo(rightX + triangle.x, box.y + (box.height / 2 + this.drawInfo.offset.y));
-        ctx.lineTo(rightX, box.y +  (box.height / 2 + this.drawInfo.offset.y) + triangle.y / 2);
+        ctx.lineTo(
+            rightX,
+            Math.max(
+                this.drawInfo.markDrawInfo.target.y - triangle.y / 2,
+                box.y,
+            ),
+        );
+        ctx.lineTo(rightX + triangle.x, this.drawInfo.markDrawInfo.target.y);
+        ctx.lineTo(
+            rightX,
+            Math.min(
+                this.drawInfo.markDrawInfo.target.y + triangle.y / 2,
+                box.y + box.height,
+            ),
+        );
         ctx.lineTo(rightX, box.y + box.height);
         ctx.lineTo(box.x, box.y + box.height);
         ctx.closePath();
@@ -57,12 +69,12 @@ export default class EventBody extends Engine.EventBody {
         const radius = 2.5;
         const mark :Coordinate = {
             x: rightX + triangle.x + 5 + radius / 2,
-            y: box.y + (box.height / 2 + this.drawInfo.offset.y),
+            y: this.drawInfo.markDrawInfo.target.y,
         };
         const markBeforeFloat :Coordinate = {
             x: rightX + triangle.x + 5 + radius / 2
                 + (this.drawInfo.offset.x - this.drawInfo.originOffsetX),
-            y: box.y + (box.height / 2 + this.drawInfo.offset.y),
+            y: this.drawInfo.markDrawInfo.target.y,
         };
         if (this.drawInfo.floated) {
             ctx.beginPath();

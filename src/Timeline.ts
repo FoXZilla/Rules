@@ -25,11 +25,4 @@ export default class Timeline extends Engine.Timeline {
 
     axisConstructor = Axis;
     eventConstructor = Event;
-
-    draw() {
-        const ctx = this.canvas.getContext('2d')!;
-        ctx.fillStyle = '#f5f5f5';
-        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-        return super.draw();
-    }
 }

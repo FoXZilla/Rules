@@ -36,7 +36,7 @@ draw('#app', [{
     title: 'Close together 4',
     description: 'The event description.',
 }, {
-    date: '2016-8-1',
+    date: '2016-8-12',
     title: 'Close together 5',
     description: 'The event description. The event description. The event description.' +
         ' The event description. The event description.',

@@ -19,7 +19,7 @@ export default class Event extends Engine.Event {
             ...this.ext.components[SN.AxisMilestone].map(
                 m => m.drawInfo.box.x + m.drawInfo.box.width - (axis.box.x - axis.width / 2),
             ),
-        );
+        ) + 15;
         super.initAxis();
     }
     initBody() {
