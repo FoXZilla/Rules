@@ -5,7 +5,7 @@ module.exports = (env, argv) => {
     return {
         entry: {
             'dist/rules': './src/index.ts',
-            'example/demo1': './example/demo1.ts',
+            'example/demo1': './docs/demo1.ts',
         },
         output: {
             path: __dirname,

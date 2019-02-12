@@ -2,7 +2,9 @@
 
 Given a event data, drawn a beautiful timeline on canvas. Powered by short-night engine.
 
-![demo1](./example/demo1.png)
+Example: [demo1](https://foxzilla.github.io/Rules/demo1.html)
+
+![demo1](docs/demo1.png)
 
 ```ts
 const events = [{

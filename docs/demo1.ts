@@ -2,12 +2,12 @@ import { draw, drawWithAnimation, drawFrom } from '../src';
 
 const events = [{
     date: '2017-5',
-    title: 'Axis example 1',
+    title: 'Axis docs 1',
     endDate: '2017-8',
     endText: 'The axis can avoid for each others',
 }, {
     date: '2017-6',
-    title: 'Axis example 2',
+    title: 'Axis docs 2',
     endDate: '2017-9-1',
     endText: 'End point is 2017.9',
 }, {
