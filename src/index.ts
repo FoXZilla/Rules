@@ -1,8 +1,17 @@
 import Timeline from './Timeline';
 import { ExtensionManager } from 'short-night';
+import { DEBUG } from 'short-night/common/definitions';
 
 import 'short-night/styles.scss';
 import './styles.scss';
+
+if (DEBUG) {
+    console.log(`\
+"Answer me sir. Are you guarding the righteousness? or just the rule?"
+"Let me do answer you! \
+I choose the rule, because only the rule can brought the true righteousness!"
+`);
+}
 
 export async function draw(
     el: string | HTMLElement,
@@ -59,3 +68,9 @@ export async function drawFrom(
     await timeline.drawFrom(data);
     return timeline;
 }
+
+(<any>window).Rules = {
+    drawFrom,
+    draw,
+    drawWithAnimation,
+};

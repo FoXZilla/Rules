@@ -69,3 +69,77 @@ const events = [{
 }];
 ```
 
+## Usage
+
+### In Webpack
+
+First, install it by npm
+```sh
+npm install --save rules-timeline
+```
+
+Then using it by ES6 modules:
+
+```js
+import { draw } from 'rules-timeline';
+draw('#app', [
+    {
+        date: '2017-5',
+        title: 'Axis docs 1',
+        endDate: '2017-8',
+        endText: 'The axis can avoid for each others',
+    },
+    // ...
+]);
+```
+
+### In Browser:
+
+Download and reference `dist/rules.js` in you project.
+
+```html
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div id="app"></div>
+    <script src="rules.js"></script>
+    <script>
+        Rules.draw('#app', [
+            {
+                date: '2017-5',
+                title: 'Axis docs 1',
+                endDate: '2017-8',
+                endText: 'The axis can avoid for each others',
+            },
+            // ...
+        ]);
+    </script>
+</body>
+</html>
+```
+
+## APIs
+
+There are 3 methods imported by entry file.
+
+|     | draw() | drawWithAnimation() | drawFrom() |
+| --- | ------ | ------------------- | ---------- |
+| description | Draw a timeline by event info. | Like draw() but with animation. | Draw a timeline by data exported. |
+| returned | Promise\<[Timeline](https://foxzilla.github.io/short-night/classes/_timeline_.timeline.html)\> | Promise\<[Timeline](https://foxzilla.github.io/short-night/classes/_timeline_.timeline.html)\> | Promise\<[Timeline](https://foxzilla.github.io/short-night/classes/_timeline_.timeline.html)\> |
+| params | 1.el: string or HTMLElement; 2. events: Array<[EventInfo](#EventInfo)> | same as draw() | 1.el: string or HTMLElement; 2. data: a data exported by `timeline.export()`
+
+### EventInfo
+
+```ts
+interface EventInfo {
+    date :string,
+    title :string,
+
+    description? :string,
+    endDate? :string | 'now',
+    endText? :string,
+}
+```

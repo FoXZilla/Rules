@@ -1,8 +1,9 @@
 {
-  "name": "rules",
-  "version": "0.0.1",
+  "name": "rules-timeline",
+  "version": "1.0.0",
   "description": "Given a event data, drawn a beautiful timeline on canvas. Powered by short-night engine.",
-  "main": "src/index.ts",
+  "main": "dist/rules.ts",
+  "types": "src/index.ts",
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack --watch --mode=development",

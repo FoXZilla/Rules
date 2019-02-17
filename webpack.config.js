@@ -3,13 +3,10 @@ const Path = require('path');
 
 module.exports = (env, argv) => {
     return {
-        entry: {
-            'dist/rules': './src/index.ts',
-            'example/demo1': './docs/demo1.ts',
-        },
+        entry: './src/index.ts',
         output: {
-            path: __dirname,
-            filename: '[name].js',
+            path: Path.join(__dirname, 'dist/'),
+            filename: 'rules.js',
         },
         module: {
             rules: [
