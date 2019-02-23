@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="app"></div>
-    <script src="../dist/rules.js"></script>
+    <script src="rules.js"></script>
     <script>
         const events = [{
             date: '2017-5',
@@ -73,15 +73,11 @@
         }];
 
         (async function () {
-            const timeline1 = await Rules.draw('#app', events);
+            while (true) {
+                await Rules.drawWithAnimation('#app', events);
 
-            await new Promise(r => setTimeout(r, 5000));
-
-            await Rules.drawFrom('#app', timeline1.export());
-
-            await new Promise(r => setTimeout(r, 3000));
-
-            const timeline2 = await Rules.drawWithAnimation('#app', events);
+                await new Promise(r => setTimeout(r, 10000));
+            }
         })();
     </script>
 </body>
