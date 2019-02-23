@@ -2,7 +2,7 @@ import { Extension, ExtensionManager } from 'short-night/extensions';
 import { AxisMilestone, Component } from 'short-night';
 import { SN } from 'short-night/common/definitions';
 
-export default class AvoidMilestion implements Partial<Extension> {
+export default class AvoidMilestone implements Partial<Extension> {
     constructor(public etx:ExtensionManager) {}
 
     async onApply(comp:Component) {

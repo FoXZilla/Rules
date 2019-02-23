@@ -40,7 +40,7 @@
     "webpack-cli": "^3.2.3"
   },
   "dependencies": {
-    "short-night": "0.0.12",
+    "short-night": "0.0.18",
     "tinytime": "^0.2.6"
   }
 }

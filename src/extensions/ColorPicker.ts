@@ -1,5 +1,12 @@
 import { Extension, ExtensionManager } from 'short-night/extensions';
 import { Timeline, Event, EventBody, EventMark, EventAxis, Component } from 'short-night';
+import { ExtraData } from 'short-night/common/Component';
+
+declare module 'short-night/common/Component' {
+    export interface ExtraData {
+        mainColor? :string;
+    }
+}
 
 export default class ColorPicker implements Partial<Extension> {
     colors = [
