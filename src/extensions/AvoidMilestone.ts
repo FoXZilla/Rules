@@ -1,18 +1,29 @@
 import { Extension, ExtensionManager } from 'short-night/extensions';
-import { AxisMilestone, Component } from 'short-night';
+import { EventBody, EventAxis, Component } from 'short-night';
 import { SN } from 'short-night/common/definitions';
 
 export default class AvoidMilestone implements Partial<Extension> {
     constructor(public etx:ExtensionManager) {}
 
     async onApply(comp:Component) {
-        if (!AxisMilestone.is(comp)) return;
+        if (EventBody.is(comp)) {
+            const milestones = this.etx.components[SN.AxisMilestone];
 
-        const grid = this.etx.components[SN.Timeline][0].grid;
+            comp.drawInfo.offset.x = Math.max(
+                comp.drawInfo.offset.x,
+                ...milestones.map(({ drawInfo: m }) => m.bodyDrawInfo.start.x - m.box.x + 12.5),
+            );
+        }
+        if (EventAxis.is(comp)) {
+            const milestones = this.etx.components[SN.AxisMilestone];
 
-        grid.eventOffset.x = Math.max(
-            grid.eventOffset.x,
-            comp.drawInfo.bodyDrawInfo.start.x - comp.drawInfo.box.x + 12.5,
-        );
+            comp.drawInfo.offsetX = Math.max(
+                comp.drawInfo.offsetX,
+                ...milestones.map(
+                    ({ drawInfo: m }) => (m.box.x + m.box.width) - m.bodyDrawInfo.start.x + 12.5,
+                ),
+            );
+
+        }
     }
 }
