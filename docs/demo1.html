@@ -76,9 +76,15 @@
 
         (async function () {
             while (true) {
-                await Rules.drawWithAnimation('#app', events);
+                const timeline = await Rules.draw('#app', events);
 
-                await new Promise(r => setTimeout(r, 10000));
+                await new Promise(r => setTimeout(r, 5000));
+
+                await Rules.drawFrom('#app', timeline.export());
+
+                await new Promise(r => setTimeout(r, 5000));
+
+                await Rules.drawWithAnimation('#app', events);
             }
         })();
     </script>
