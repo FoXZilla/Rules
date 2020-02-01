@@ -1,9 +1,9 @@
 {
   "name": "@foxzilla/rules",
-  "version": "0.0.1",
+  "version": "1.0.0-beta.1",
   "description": "Given a event data, drawn a beautiful timeline on canvas. Powered by short-night engine.",
-  "main": "dist/rules.ts",
-  "types": "src/index.ts",
+  "main": "dist/rules.js",
+  "typings": "src/index.ts",
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack --watch --mode=development",
@@ -38,10 +38,10 @@
     "tslint-webpack-plugin": "^2.0.2",
     "typescript": "^3.3.3",
     "webpack": "^4.29.3",
+    "tinytime": "^0.2.6",
     "webpack-cli": "^3.2.3"
   },
   "dependencies": {
-    "short-night": "0.0.22",
-    "tinytime": "^0.2.6"
+    "short-night": "^1.0.0-rc.1"
   }
 }

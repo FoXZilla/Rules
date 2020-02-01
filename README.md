@@ -1,8 +1,10 @@
-# Rules
+# Rules Timeline
 
 Given a event data, drawn a beautiful timeline on canvas. Powered by short-night engine.
 
-Example: [demo1](https://foxzilla.github.io/Rules/demo1.html)
+Try it in online:
+
+- http://short-night.pea3nut.org/example/rule-example-1
 
 ![demo1](docs/demo1.png)
 
@@ -67,35 +69,32 @@ const events = [{
     description: 'In japan and chinese, the pronunciation  of 39 is very like "Thank You". ' +
         'So some people call as Giving Day.',
 }];
+
+Rules.draw('#app', events);
 ```
 
-## Usage
+## Install
 
 ### In Webpack
 
-First, install it by npm
+Installing by npm:
+
 ```sh
-npm install --save rules-timeline
+npm install --save @foxzilla/rules
 ```
 
-Then using it by ES6 modules:
+Using by ES6 modules:
 
 ```js
-import { draw } from 'rules-timeline';
-draw('#app', [
-    {
-        date: '2017-5',
-        title: 'Axis docs 1',
-        endDate: '2017-8',
-        endText: 'The axis can avoid for each others',
-    },
-    // ...
-]);
+import * as Rules from '@foxzilla/rules';
+
+Rules.draw(...);
+new Rules.Timeline(...);
 ```
 
 ### In Browser:
 
-Download and reference `dist/rules.js` in you project.
+Download and refer the `dist/rules.js` in your project.
 
 ```html
 <!doctype html>
@@ -105,17 +104,11 @@ Download and reference `dist/rules.js` in you project.
 </head>
 <body>
     <div id="app"></div>
+
     <script src="rules.js"></script>
     <script>
-        Rules.draw('#app', [
-            {
-                date: '2017-5',
-                title: 'Axis docs 1',
-                endDate: '2017-8',
-                endText: 'The axis can avoid for each others',
-            },
-            // ...
-        ]);
+        Rules.draw(...);
+        new Rules.Timeline(...);
     </script>
 </body>
 </html>
@@ -123,23 +116,56 @@ Download and reference `dist/rules.js` in you project.
 
 ## APIs
 
-There are 3 methods imported by entry file.
-
-|     | draw() | drawWithAnimation() | drawFrom() |
-| --- | ------ | ------------------- | ---------- |
-| description | Draw a timeline by event info. | Like draw() but with animation. | Draw a timeline by data exported. |
-| returned | Promise\<[Timeline](https://foxzilla.github.io/short-night/classes/_timeline_.timeline.html)\> | Promise\<[Timeline](https://foxzilla.github.io/short-night/classes/_timeline_.timeline.html)\> | Promise\<[Timeline](https://foxzilla.github.io/short-night/classes/_timeline_.timeline.html)\> |
-| params | 1.el: string or HTMLElement; 2. events: Array<[EventInfo](#EventInfo)> | same as draw() | 1.el: string or HTMLElement; 2. data: a data exported by `timeline.export()`
-
-### EventInfo
+### .draw(el, data)
 
 ```ts
-interface EventInfo {
-    date :string,
-    title :string,
-
-    description? :string,
-    endDate? :string | 'now',
-    endText? :string,
-}
+async function draw(
+    el :string | HTMLElement,
+    data :Array<{
+        date :string,
+        title :string,
+        
+        // Optional
+        description ?:string,
+        endDate ?:string | 'now', // a string parse to a date
+        endText ?:string,
+    }>,
+) :Promise<Timeline>
 ```
+
+Draw a timeline using `data` on `el`.
+
+Return a instance of [Timeline][#.Timeline] wrapped by Promise.
+
+### .Timeline
+
+The constructor of Timeline. You can draw a timeline manually.
+
+```js
+(async function has() {
+    const timeline = new Rules.Timeline(
+        Rules.Timeline.mount('#app', 'rules'),
+        // ...other construct info, see: 
+        // https://foxzilla.github.io/short-night/interfaces/_timeline_.constructinfo.html
+    );
+   
+    timeline.drawInfo.events = [...]; // change properties of timeline
+
+    await timeline.apply({...}); // apply the changes and set RuntimeInfo, see https://foxzilla.github.io/short-night/interfaces/_timeline_.runtimeinfo.html 
+
+    timeline.draw(); // draw a timeline
+
+}());
+```
+
+More info see the Short-Night engine doc(check out before switch from "All" to "Public" in nav bar):
+
+- https://foxzilla.github.io/short-night/modules/_timeline_.html
+
+
+### .Engine
+
+The Short-Night engine. see: 
+
+- https://foxzilla.github.io/short-night/globals.html
+- https://github.com/FoXZilla/short-night/blob/master/src/index.ts

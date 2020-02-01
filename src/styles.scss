@@ -1,41 +1,52 @@
-.short-night.rules{
+.short-night.sn-rules{
     font-family: sans-serif;
-    .canvas{
+    &.sn-container{
         background: #f5f5f5;
     }
-    &.axis_milestone{
+    &.sn-axis_milestone{
         font-size: 12px;
         color: #1e2122;
         font-weight: bold;
         padding: 0 0 0 32.5px;
     }
-    &.event_body{
+    &.sn-event_body{
         color: #fff;
         padding: 10px 25px+6px+5px+5px 10px 14px;
         //            ^- text-padding
         //                 ^- △
         //                     ^- Space
         //                         ^- Mark
-        .title{
+        .sn-title{
             font-size: 13px;
             color: #666666;
             text-align: left;
         }
-        .date{
-            font-size: 9px;
+        .sn-date{
+            $browserMinFontSize: 12;
+            $fontSize: 10;
+
+            font-size:$browserMinFontSize;
+            transform: scale(#{ ($fontSize / $browserMinFontSize) });
+            transform-origin: left bottom;
+            margin-top: - ($browserMinFontSize - $fontSize + 0px);
+
+            white-space: nowrap;
+
+            -webkit-text-size-adjust: none;
+            text-size-adjust: none;
             color: #666666;
             font-style: normal;
             text-align: left;
         }
-        .description{
+        .sn-description{
             font-size: 10px;
             color: #999999;
         }
-        .foldPlaceholder{
-            @extend .title;
+        .sn-foldPlaceholder{
+            @extend .sn-title;
         }
     }
-    &.event_axis.endText{
+    &.sn-event_axis.sn-endText{
         font-size: 9px;
     }
 }

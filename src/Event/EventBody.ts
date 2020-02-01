@@ -20,11 +20,11 @@ export default class EventBody extends Engine.EventBody {
     createElement() {
         const flag = super.createElement();
         const template = tinytime('{YYYY}.{Mo}', { padMonth: true });
-        const elt = this.element.querySelector('.date')!;
+        const elt = this.element.querySelector('.sn-date')!;
 
         elt.innerHTML = template.render(new Date(this.drawInfo.date));
         if (this.drawInfo.endDate) {
-            elt.innerHTML += `-${template.render(new Date(this.drawInfo.endDate))}`;
+            elt.innerHTML += ` - ${template.render(new Date(this.drawInfo.endDate))}`;
         }
 
         return flag;
