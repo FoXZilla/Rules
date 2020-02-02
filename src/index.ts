@@ -1,5 +1,4 @@
 import Timeline from './Timeline';
-import { AxisBody, AxisScale, AxisMilestone, ExtensionManager } from 'short-night';
 import { DEBUG } from 'short-night/common/definitions';
 import { createDraw } from 'short-night/common/functions';
 import { TimelineData } from 'short-night/types';
@@ -30,14 +29,14 @@ export async function draw(
     const timeline = new Timeline({
         canvas,
         container,
-        ext: new ExtensionManager({
+        ext: new Engine.ExtensionManager({
             breakpointAnimation: {
                 autoScroll: false,
                 playAnimation: true,
-                timeoutCounter(point, config) {
-                    if (config.protagonist && AxisBody.is(config.protagonist)) return 0;
-                    if (config.protagonist && AxisScale.is(config.protagonist)) return 30;
-                    if (config.protagonist && AxisMilestone.is(config.protagonist)) return 30;
+                timeoutCounter(point, { protagonist }) {
+                    if (protagonist && Engine.AxisBody.is(protagonist)) return 0;
+                    if (protagonist && Engine.AxisScale.is(protagonist)) return 30;
+                    if (protagonist && Engine.AxisMilestone.is(protagonist)) return 30;
                     return 50;
                 },
             },
@@ -56,7 +55,7 @@ export async function drawWithAnimation(
     const timeline = new Timeline({
         canvas,
         container,
-        ext: new ExtensionManager({
+        ext: new Engine.ExtensionManager({
             breakpointAnimation: {
                 autoScroll: true,
                 scrollDuration: 150,

@@ -1,6 +1,6 @@
 {
   "name": "@foxzilla/rules",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.3",
   "description": "Given a event data, drawn a beautiful timeline on canvas. Powered by short-night engine.",
   "main": "dist/rules.js",
   "typings": "src/index.ts",
@@ -42,6 +42,6 @@
     "webpack-cli": "^3.2.3"
   },
   "dependencies": {
-    "short-night": "^1.0.0-rc.1"
+    "short-night": "^1.0.0-rc.3"
   }
 }
