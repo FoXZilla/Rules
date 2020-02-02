@@ -1,6 +1,7 @@
 import * as Engine from 'short-night';
 import tinytime = require('tinytime');
 import { Coordinate } from 'short-night/types';
+import { parseDate } from 'short-night/common/functions'
 
 export default class EventBody extends Engine.EventBody {
 
@@ -22,9 +23,9 @@ export default class EventBody extends Engine.EventBody {
         const template = tinytime('{YYYY}.{Mo}', { padMonth: true });
         const elt = this.element.querySelector('.sn-date')!;
 
-        elt.innerHTML = template.render(new Date(this.drawInfo.date));
+        elt.innerHTML = template.render(parseDate(this.drawInfo.date));
         if (this.drawInfo.endDate) {
-            elt.innerHTML += ` - ${template.render(new Date(this.drawInfo.endDate))}`;
+            elt.innerHTML += ` ~ ${template.render(parseDate(this.drawInfo.endDate))}`;
         }
 
         return flag;
