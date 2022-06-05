@@ -2,7 +2,7 @@
 
 Given a event data, drawn a beautiful timeline on canvas. Powered by short-night engine.
 
-Try it in online:
+Try it online:
 
 - http://short-night.pea3nut.org/example/rule-example-1
 
@@ -73,7 +73,7 @@ const events = [{
 Rules.draw('#app', events);
 ```
 
-## Install
+# Install
 
 ### In Webpack
 
@@ -169,3 +169,52 @@ The Short-Night engine. see:
 
 - https://foxzilla.github.io/short-night/globals.html
 - https://github.com/FoXZilla/short-night/blob/master/src/index.ts
+
+# Contributor's Guide
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+1. Fork the project on GitHub.
+
+2. Clone the project.
+
+3. perform the below command
+```sh
+npm link
+```
+4. Create a branch specific to the issue you are working on.
+```sh
+git checkout -b branch-name
+```
+5. Add your modified files to Git,
+```sh
+git add path/to/filename.ext
+```
+You can also add all unstaged files using:
+```sh
+git add .
+```
+Note: using a git add . will automatically add all files. You can do a git status to see your changes, but do it before git add.
+
+6. Commit your changes using a descriptive commit message.
+```sh
+git commit -m "Brief Description of Commit"
+```
+7. Push your commits to your GitHub Fork:
+```sh
+git push -u origin branch-name
+```
+8. Submit a pull request.
+
+### Follow the below step in your local project
+
+1. Installing the Rules
+```sh
+npm install @foxzilla/rules
+```
+2. Linking the Rules with your local connection
+```sh
+npm link @foxzilla/rules
+```

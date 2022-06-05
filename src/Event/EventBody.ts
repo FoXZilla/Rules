@@ -1,5 +1,4 @@
 import * as Engine from 'short-night';
-import tinytime = require('tinytime');
 import { Coordinate } from 'short-night/types';
 import { parseDate } from 'short-night/common/functions'
 
@@ -20,12 +19,17 @@ export default class EventBody extends Engine.EventBody {
 
     createElement() {
         const flag = super.createElement();
-        const template = tinytime('{YYYY}.{Mo}', { padMonth: true });
+        // const template = tinytime('{YYYY}.{Mo}', { padMonth: true });
         const elt = this.element.querySelector('.sn-date')!;
 
-        elt.innerHTML = template.render(parseDate(this.drawInfo.date));
+        // elt.innerHTML = template.render(parseDate(this.drawInfo.date));
+
+        const pDate = parseDate(this.drawInfo.date);
+
+        elt.innerHTML = `${pDate.getUTCFullYear()}.${String(pDate.getMonth() + 1).padStart(2, '0')}`;
         if (this.drawInfo.endDate) {
-            elt.innerHTML += ` ~ ${template.render(parseDate(this.drawInfo.endDate))}`;
+            const eDate = parseDate(this.drawInfo.endDate);
+            elt.innerHTML += ` ~ ${eDate.getUTCFullYear()}.${String(eDate.getMonth() + 1).padStart(2, '0')}`;
         }
 
         return flag;
