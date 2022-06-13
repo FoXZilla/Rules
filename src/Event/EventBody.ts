@@ -19,17 +19,25 @@ export default class EventBody extends Engine.EventBody {
 
     createElement() {
         const flag = super.createElement();
-        // const template = tinytime('{YYYY}.{Mo}', { padMonth: true });
+
         const elt = this.element.querySelector('.sn-date')!;
 
-        // elt.innerHTML = template.render(parseDate(this.drawInfo.date));
+        /**
+         * combine year and month with two digit
+         */
+        const elementDate = (pDate: Date) => ((date) => {
 
-        const pDate = parseDate(this.drawInfo.date);
+            const year = date.getUTCFullYear();
+            const month = String(date.getMonth() + 1);
+            const padMonth = month.padStart(2, '0');
 
-        elt.innerHTML = `${pDate.getUTCFullYear()}.${String(pDate.getMonth() + 1).padStart(2, '0')}`;
+            return `${year}.${padMonth}`;
+
+        })(pDate);
+
+        elt.innerHTML = elementDate(parseDate(this.drawInfo.date));
         if (this.drawInfo.endDate) {
-            const eDate = parseDate(this.drawInfo.endDate);
-            elt.innerHTML += ` ~ ${eDate.getUTCFullYear()}.${String(eDate.getMonth() + 1).padStart(2, '0')}`;
+            elt.innerHTML += ` ~ ${elementDate(parseDate(this.drawInfo.endDate))}`;
         }
 
         return flag;

@@ -1,5 +1,3 @@
-// const rollupFileManager = require('fii');
-// const Path = require('path');
 import scss from 'rollup-plugin-scss';
 import typescript from '@rollup/plugin-typescript';
 import multiInput from 'rollup-plugin-multi-input';
