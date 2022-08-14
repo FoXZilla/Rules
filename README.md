@@ -1,8 +1,8 @@
 # Rules Timeline
 
-Given a event data, drawn a beautiful timeline on canvas. Powered by short-night engine.
+Given events data, draws a beautiful timeline on canvas. Powered by short-night engine.
 
-Try it in online:
+Try it online:
 
 - http://short-night.pea3nut.org/example/rule-example-1
 
@@ -89,6 +89,7 @@ Using by ES6 modules:
 import * as Rules from '@foxzilla/rules';
 
 Rules.draw(...);
+Rules.drawWithAnimation(...);
 new Rules.Timeline(...);
 ```
 
@@ -108,6 +109,7 @@ Download and refer the `dist/rules.js` in your project.
     <script src="rules.js"></script>
     <script>
         Rules.draw(...);
+        Rules.drawWithAnimation(...);
         new Rules.Timeline(...);
     </script>
 </body>
