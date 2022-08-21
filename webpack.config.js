@@ -5,7 +5,7 @@ const FileManagerPlugin = require('filemanager-webpack-plugin');
 module.exports = {
     entry: {
         'webpack-example': './src/webpack-example.ts',
-        'rules': './src/index.ts'
+        rules: './src/index.ts',
     },
     output: {
         path: Path.join(__dirname, 'dist/'),
@@ -28,15 +28,24 @@ module.exports = {
     resolve: { extensions: ['.js', '.ts', '.d.ts'] },
     plugins: [
         new FileManagerPlugin({
-            onEnd: {
-                copy: [{
-                    source: 'dist/rules.js',
-                    destination: 'docs/rules.js',
-                }],
-                move: [{
-                    source: 'dist/webpack-example.js',
-                    destination: 'docs/webpack-example.js'
-                }],
+            events: {
+                onEnd: {
+                    copy: [
+                        {
+                            source: 'dist/rules.js',
+                            destination: 'docs/rules.js',
+                        },
+                    ],
+                    delete: [
+                        'docs/webpack-example.js',
+                    ],
+                    move: [
+                        {
+                            source: 'dist/webpack-example.js',
+                            destination: 'docs/webpack-example.js',
+                        },
+                    ],
+                },
             },
         }),
     ],

@@ -1,4 +1,4 @@
-import * as Rules from '../';
+import * as Rules from './index';
 
 Rules.draw('#app', [{
     date: '2017-5',
