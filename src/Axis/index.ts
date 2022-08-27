@@ -11,5 +11,4 @@ export default class Axis extends Engine.Axis {
     bodyConstructor = AxisBody;
     milestoneConstructor = AxisMilestone;
     scaleConstructor = AxisScale;
-
 }

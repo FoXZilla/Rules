@@ -2,11 +2,7 @@ import * as Engine from 'short-night';
 
 export default class EventAxis extends Engine.EventAxis {
     theme = 'rules';
-    drawInfo: Engine.EventAxis['drawInfo'] & {mainColor:string} = Object.assign(
-        {},
-        this.drawInfo,
-        { mainColor: '' },
-    );
+    drawInfo :Engine.EventAxis['drawInfo'] & { mainColor :string } = { ...this.drawInfo, mainColor: '' };
 
     createElement() {
         const flag = super.createElement();
@@ -49,5 +45,4 @@ export default class EventAxis extends Engine.EventAxis {
 
         return super.draw();
     }
-
 }

@@ -1,4 +1,5 @@
 import * as Engine from 'short-night';
+
 export default class AxisScale extends Engine.AxisScale {
     theme = 'rules';
 
@@ -17,7 +18,7 @@ export default class AxisScale extends Engine.AxisScale {
     }
 
     draw() {
-        const box = this.drawInfo.box;
+        const { box } = this.drawInfo;
         const ctx = this.canvas.getContext('2d')!;
 
         ctx.beginPath();
@@ -30,5 +31,4 @@ export default class AxisScale extends Engine.AxisScale {
 
         return super.draw();
     }
-
 }

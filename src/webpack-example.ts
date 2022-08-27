@@ -40,13 +40,13 @@ Rules.draw('#app', [{
 }, {
     date: '2016-8-12',
     title: 'Close together 5',
-    description: 'The event description. The event description. The event description.' +
-        ' The event description. The event description.',
+    description: 'The event description. The event description. The event description.'
+        + ' The event description. The event description.',
 }, {
     date: '2016-8-15',
     title: 'Close together 6',
-    description: 'The event description. The event description. The event description. ' +
-        'The event description. The event description.',
+    description: 'The event description. The event description. The event description. '
+        + 'The event description. The event description.',
 }, {
     date: '2018-4-2',
     title: 'A event which title is very very very very very very very very very very long',
@@ -59,6 +59,6 @@ Rules.draw('#app', [{
 }, {
     date: '2016-3-9',
     title: '39s Day!',
-    description: 'In japan and chinese, the pronunciation  of 39 is very like "Thank You". ' +
-        'So some people call as Giving Day.',
+    description: 'In japan and chinese, the pronunciation  of 39 is very like "Thank You". '
+        + 'So some people call as Giving Day.',
 }]);

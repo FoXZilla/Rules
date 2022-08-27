@@ -4,7 +4,7 @@ export default class AxisBody extends Engine.AxisBody {
     theme = 'rules';
 
     draw() {
-        const box = this.drawInfo.box;
+        const { box } = this.drawInfo;
         const ctx = this.canvas.getContext('2d')!;
 
         ctx.beginPath();
@@ -17,5 +17,4 @@ export default class AxisBody extends Engine.AxisBody {
 
         return super.draw();
     }
-
 }
