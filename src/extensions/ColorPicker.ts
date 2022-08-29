@@ -4,7 +4,7 @@ import { ExtraData } from 'short-night/common/Component';
 
 declare module 'short-night/common/Component' {
     export interface ExtraData {
-        mainColor? :string;
+        mainColor ?:string;
     }
 }
 
