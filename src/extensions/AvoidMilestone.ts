@@ -3,9 +3,9 @@ import { EventBody, EventAxis, Component } from 'short-night';
 import { SN } from 'short-night/common/definitions';
 
 export default class AvoidMilestone implements Partial<Extension> {
-    constructor(public etx:ExtensionManager) {}
+    constructor(public etx :ExtensionManager) {}
 
-    async onApply(comp:Component) {
+    async onApply(comp :Component) {
         if (EventBody.is(comp)) {
             const milestones = this.etx.components[SN.AxisMilestone];
 
@@ -23,7 +23,6 @@ export default class AvoidMilestone implements Partial<Extension> {
                     ({ drawInfo: m }) => (m.box.x + m.box.width) - m.bodyDrawInfo.start.x + 12.5,
                 ),
             );
-
         }
     }
 }

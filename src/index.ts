@@ -48,9 +48,9 @@ export async function draw(
 }
 
 export async function drawWithAnimation(
-    el: string | HTMLElement,
-    events:Timeline['drawInfo']['events'],
-):Promise<Timeline> {
+    el :string | HTMLElement,
+    events :Timeline['drawInfo']['events'],
+) :Promise<Timeline> {
     const { container, canvas } = Timeline.mount(el, 'rules');
     const timeline = new Timeline({
         canvas,

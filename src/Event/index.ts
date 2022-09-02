@@ -16,5 +16,4 @@ export default class Event extends Engine.Event {
         super.initBody();
         this.body.drawInfo.originOffsetX = this.grid.eventOffset.x;
     }
-
 }

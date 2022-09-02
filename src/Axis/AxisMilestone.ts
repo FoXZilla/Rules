@@ -17,7 +17,7 @@ export default class AxisMilestone extends Engine.AxisMilestone {
         return flag;
     }
     draw() {
-        const box = this.drawInfo.box;
+        const { box } = this.drawInfo;
         const ctx = this.canvas.getContext('2d')!;
 
         ctx.beginPath();
@@ -30,5 +30,4 @@ export default class AxisMilestone extends Engine.AxisMilestone {
 
         return super.draw();
     }
-
 }

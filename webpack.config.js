@@ -15,11 +15,6 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.ts$/,
-                enforce: 'pre',
-                use: 'tslint-loader',
-            },
             { test: /\.ts$/, use: 'ts-loader' },
             { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
             { test: /\.css$/, use: ['style-loader', 'css-loader'] },

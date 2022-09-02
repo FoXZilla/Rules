@@ -1,22 +1,17 @@
 import * as Engine from 'short-night';
 import tinytime = require('tinytime');
 import { Coordinate } from 'short-night/types';
-import { parseDate } from 'short-night/common/functions'
+import { parseDate } from 'short-night/common/functions';
 
 export default class EventBody extends Engine.EventBody {
-
     theme = 'rules';
     drawInfo :(
         Engine.EventBody['drawInfo']
-        &{
+        & {
             mainColor :string;
-            originOffsetX: number;
+            originOffsetX :number;
         }
-    ) = Object.assign(
-        {},
-        this.drawInfo,
-        { mainColor: '' },
-    );
+    ) = { ...this.drawInfo, mainColor: '' };
 
     createElement() {
         const flag = super.createElement();
@@ -33,14 +28,14 @@ export default class EventBody extends Engine.EventBody {
 
     draw() {
         const ctx = this.canvas.getContext('2d')!;
-        const box = this.drawInfo.box;
+        const { box } = this.drawInfo;
 
         ctx.shadowColor = 'rgba(0, 0, 0, 0.04)';
         ctx.shadowBlur = 15;
         ctx.shadowOffsetY = 5;
         ctx.shadowOffsetX = 5;
 
-        const triangle :Coordinate = { x: 6, y:7.5 };
+        const triangle :Coordinate = { x: 6, y: 7.5 };
         const rightX = box.x + box.width - 5 - 5 - triangle.x;
         ctx.beginPath();
         ctx.setLineDash([]);

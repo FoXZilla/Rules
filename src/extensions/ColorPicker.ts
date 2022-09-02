@@ -4,7 +4,7 @@ import { ExtraData } from 'short-night/common/Component';
 
 declare module 'short-night/common/Component' {
     export interface ExtraData {
-        mainColor? :string;
+        mainColor ?:string;
     }
 }
 
@@ -20,8 +20,8 @@ export default class ColorPicker implements Partial<Extension> {
         '#e89235',
     ];
     startIndex = Math.floor(Math.random() * 3);
-    constructor(public etx:ExtensionManager) {}
-    async onApply(comp:Component) {
+    constructor(public etx :ExtensionManager) {}
+    async onApply(comp :Component) {
         if (Timeline.is(comp)) this.createColorIntoEvent(comp);
         if (
             EventBody.is(comp)
@@ -29,7 +29,7 @@ export default class ColorPicker implements Partial<Extension> {
             || EventAxis.is(comp)
         ) this.setColorIntoDrawInfo(comp);
     }
-    onConstruct(comp:Component) {
+    onConstruct(comp :Component) {
         if (Event.is(comp)) comp.extraData.mainColor = this.getColor();
     }
 
@@ -39,8 +39,8 @@ export default class ColorPicker implements Partial<Extension> {
         return this.colors[this.startIndex];
     }
 
-    setColorIntoDrawInfo(comp:EventBody|EventMark|EventAxis) {
-        const etx = this.etx;
+    setColorIntoDrawInfo(comp :EventBody | EventMark | EventAxis) {
+        const { etx } = this;
 
         Object.defineProperty(comp.drawInfo, 'mainColor', {
             get() {
@@ -49,7 +49,7 @@ export default class ColorPicker implements Partial<Extension> {
         });
     }
 
-    createColorIntoEvent(timeline:Timeline) {
+    createColorIntoEvent(timeline :Timeline) {
         for (let i = 0; i < timeline.events.length; i++) {
             timeline.events[i].extraData.mainColor = this.getColor();
         }
